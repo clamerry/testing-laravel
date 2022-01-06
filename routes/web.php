@@ -19,11 +19,13 @@ use App\Http\Controllers\PortofolioController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        "title" => "Home"
-    ]);
-});
+// Route::get('/', function () {
+//     return view('home', [
+//         "title" => "Home"
+//     ]);
+// });
+
+
 
 //routing ke halaman home
 Route::get('/home', function () {
