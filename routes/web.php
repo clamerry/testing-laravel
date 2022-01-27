@@ -19,13 +19,9 @@ use App\Http\Controllers\PortofolioController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home', [
-//         "title" => "Home"
-//     ]);
-// });
-
-
+//Tampilan awal website: Halaman Login
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/', [LoginController::class, 'authenticate']);
 
 //routing ke halaman home
 Route::get('/home', function () {
@@ -35,7 +31,7 @@ Route::get('/home', function () {
     ]);
 });
 
-//routing ke halaman about
+// routing ke halaman about
 Route::get('/about', function () {
     return view('about', [
         "title" => "About",
@@ -61,9 +57,21 @@ Route::get('/categories', function() {
     ]);
 });
 
-//routing ke halaman login
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
+//sidebar routing
+//routing ke halaman experiences
+Route::get('/dashboard/experiences', function() {
+    return view('dashboard/experiences.index');
+})->middleware('auth');
+
+//routing ke halaman projects
+Route::get('/dashboard/projects', function() {
+    return view('dashboard/projects.index');
+})->middleware('auth');
+
+//routing ke halaman achievements
+Route::get('/dashboard/achievements', function() {
+    return view('dashboard/achievements.index');
+})->middleware('auth');
 
 //routing ke halaman logout
 Route::post('/logout', [LoginController::class, 'logout']);
@@ -76,4 +84,13 @@ Route::get('/dashboard', function() {
 //routing untuk slug di add portofolio
 Route::get('/dashboard/portofolios/checkSlug', [DashboardPortofolioController::class, 'checkSlug'])->middleware('auth');
 
+//routing sidebar dashboard
 Route::resource('/dashboard/portofolios', DashboardPortofolioController::class)->middleware('auth');
+
+// Route::get('/dashboard/mahasiswa', function() {
+//     return view('dashboard.mahasiswa.index');
+// })->middleware('auth');
+
+//routing ke halaman sesuai role
+Route::get('/dashboard_admin', function () { return view('dashboard_admin.index'); })->middleware('checkRole:admin');
+// Route::get('/dashboard_mhs', function () { return view('dashboard_mhs.index'); })->middleware(['checkRole:mahasiswa,admin']);

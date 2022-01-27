@@ -16,3 +16,5 @@ class Category extends Model
         return $this->hasMany(Portofolio::class);
     }
 }
+
+// Model mengelola portofolio

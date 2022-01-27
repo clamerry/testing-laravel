@@ -18,7 +18,7 @@ class DashboardPortofolioController extends Controller
      */
     public function index()
     {
-         
+        
         return view('dashboard.portofolios.index', [
             'portofolios' => Portofolio::where('user_id', auth()->user()->id)->get()
         ]);
