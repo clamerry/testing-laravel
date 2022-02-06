@@ -10,11 +10,6 @@
             class="navbar-toggler-icon"></span></button>
     <div class="topcenter collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
-            <li class="nav-item {{ Request::is('dashboard/profile*') ? 'active' : '' }}">
-                <a class="nav-link js-scroll-trigger text-capitalize" href="">
-                    <span data-feather="user" style="width: 19px; height:19px"></span>
-                    Profil Mahasiswa</a>
-            </li>
             <li class="nav-item">
                 <a class="dropdown-btn nav-link js-scroll-trigger text-capitalize" href="#">
                     <span data-feather="file-text" style="width: 19px; height:19px"></span>
@@ -37,12 +32,23 @@
                 </div>
             </li>
             <li class="nav-item {{ Request::is('dashboard/generate*') ? 'active' : '' }}">
-                <a class="nav-link js-scroll-trigger text-capitalize" href="">
+                <a class="nav-link js-scroll-trigger text-capitalize" href="/dashboard/generate">
                     <span data-feather="monitor" style="width: 19px; height:19px"></span>
                     Tampilkan Portofolio</a>
             </li>
+            <li class="nav-item {{ Request::is('dashboard/generate*') ? 'active' : '' }}">
+                <a class="nav-link js-scroll-trigger text-capitalize" href="/dashboard/mahasiswa">
+                    <span data-feather="file-text" style="width: 19px; height:19px"></span>
+                    Kelola Mahasiswa</a>
+            </li>
         </ul>
     </div>
+
+    <form action="/logout" method="post">
+        @csrf
+        <button type="submit" class="nav-link px-3 bg-dark border-0">Logout <span
+                data-feather="log-out"></span></button>
+    </form>
 </nav>
 
 <script>

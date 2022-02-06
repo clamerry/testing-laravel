@@ -14,24 +14,92 @@
     <div class="table-responsive col-lg-12">
         <a href="/dashboard/portofolios/create" class="btn btn-primary mb-3">Add New Achievement</a>
 
-        <div class="col-12">
+        <div class="table-responsive col-lg-12">
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-header" style="background-color: darkgray">
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 250px;">
+                                <input type="text" name="table_search" class="form-control float-right"
+                                    placeholder="Search">
+
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Certificate</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-widget="expandable-table" aria-expanded="false">
+                                    <td>1</td>
+                                    <td>Achievement 1</td>
+                                    <td>This Achievement is about blablabla</td>
+                                    <td>Certificate 1</td>
+                                    <td>Edit, Delete</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>2</td>
+                                    <td>Achievement 2</td>
+                                    <td>This Achievement is about blablabla</td>
+                                    <td>Certificate 2</td>
+                                    <td>Edit, Delete</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Achievement 3</td>
+                                    <td>This Achievement is about blablabla</td>
+                                    <td>Certificate 3</td>
+                                    <td>Edit, Delete</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Achievement 4</td>
+                                    <td>This Achievement is about blablabla</td>
+                                    <td>Certificate 4</td>
+                                    <td>Edit, Delete</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+
+        {{-- <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Achievement and Certificate</h3>
+                    <h3 class="card-title">Experience</h3>
                 </div>
                 <div class="card-body">
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
+                                <th>Date and time</th>
                                 <th>Description</th>
                                 <th>Detail</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
-                            @foreach ($portofolios as $porto)
+                        <tbody> --}}
+        {{-- @foreach ($experiences as $exp)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $porto->title }}</td>
@@ -52,12 +120,12 @@
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
-                        </tbody> --}}
+                            @endforeach --}}
+        {{-- </tbody>
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
+                                <th>Date and time</th>
                                 <th>Description</th>
                                 <th>Detail</th>
                                 <th>Action</th>
@@ -66,7 +134,10 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
+
+   
+
 
 @endsection

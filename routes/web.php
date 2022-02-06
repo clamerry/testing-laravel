@@ -73,12 +73,27 @@ Route::get('/dashboard/achievements', function() {
     return view('dashboard/achievements.index');
 })->middleware('auth');
 
+//routing ke halaman kelola mahasiswa
+Route::get('/dashboard/mahasiswa', function() {
+    return view('dashboard/mahasiswa.index');
+})->middleware('auth');
+
+//routing ke halaman tampilkan portofolio
+Route::get('/dashboard/generate', function() {
+    return view('dashboard/generate.index');
+})->middleware('auth');
+
 //routing ke halaman logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
 //routing ke halaman dashboard
 Route::get('/dashboard', function() {
     return view('dashboard.index');
+})->middleware('auth');
+
+//routing ke halaman Profile
+Route::get('/dashboard/profiles', function() {
+    return view('dashboard.profiles.about');
 })->middleware('auth');
 
 //routing untuk slug di add portofolio

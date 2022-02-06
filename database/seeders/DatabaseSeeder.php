@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Experience;
 use App\Models\Portofolio;
 use Illuminate\Database\Seeder;
 
@@ -51,43 +52,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Portofolio::factory(20)->create();
-        //     'title' => 'Aplikasi 1',
-        //     'slug' => 'aplikasi-1',
-        //     'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, minima!',
-        //     'body' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis accusamus id ipsa sit nesciunt dolor, corporis aperiam veritatis eos consequuntur neque quam odio tempore itaque quos minima ea enim, ducimus quidem incidunt quasi expedita rerum ipsam. Magnam ipsum ducimus nesciunt unde impedit illum debitis, soluta dolor? distinctio repellat eum maiores numquam maxime suscipit nulla voluptatibus sunt molestiae sapiente ipsam enim, quae laudantium nihil ducimus consectetur fugiat deleniti corrupti aliquam veritatis. Unde similique minima iure! Fugiat facilis voluptatibus eligendi enim!',
-        //     'category_id' => 1,
-        //     'user_id' => 1
-        // ]);
 
-        // Portofolio::create([
-        //     'title' => 'Aplikasi 2',
-        //     'slug' => 'aplikasi-2',
-        //     'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, minima!',
-        //     'body' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis accusamus id ipsa sit nesciunt dolor, corporis aperiam veritatis eos consequuntur neque quam odio tempore itaque quos minima ea enim, ducimus quidem incidunt quasi expedita rerum ipsam. Magnam ipsum ducimus nesciunt unde impedit illum debitis, soluta dolor? distinctio repellat eum maiores numquam maxime suscipit nulla voluptatibus sunt molestiae sapiente ipsam enim, quae laudantium nihil ducimus consectetur fugiat deleniti corrupti aliquam veritatis. Unde similique minima iure! Fugiat facilis voluptatibus eligendi enim!',
-        //     'category_id' => 2,
-        //     'user_id' => 1
-
-        // ]);
-
-        // Portofolio::create([
-        //     'title' => 'Aplikasi 3',
-        //     'slug' => 'aplikasi-3',
-        //     'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, minima!',
-        //     'body' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis accusamus id ipsa sit nesciunt dolor, corporis aperiam veritatis eos consequuntur neque quam odio tempore itaque quos minima ea enim, ducimus quidem incidunt quasi expedita rerum ipsam. Magnam ipsum ducimus nesciunt unde impedit illum debitis, soluta dolor? distinctio repellat eum maiores numquam maxime suscipit nulla voluptatibus sunt molestiae sapiente ipsam enim, quae laudantium nihil ducimus consectetur fugiat deleniti corrupti aliquam veritatis. Unde similique minima iure! Fugiat facilis voluptatibus eligendi enim!',
-        //     'category_id' => 3,
-        //     'user_id' => 1
-
-        // ]);
-
-        // Portofolio::create([
-        //     'title' => 'Aplikasi 4',
-        //     'slug' => 'aplikasi-4',
-        //     'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, minima!',
-        //     'body' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis accusamus id ipsa sit nesciunt dolor, corporis aperiam veritatis eos consequuntur neque quam odio tempore itaque quos minima ea enim, ducimus quidem incidunt quasi expedita rerum ipsam. Magnam ipsum ducimus nesciunt unde impedit illum debitis, soluta dolor? distinctio repellat eum maiores numquam maxime suscipit nulla voluptatibus sunt molestiae sapiente ipsam enim, quae laudantium nihil ducimus consectetur fugiat deleniti corrupti aliquam veritatis. Unde similique minima iure! Fugiat facilis voluptatibus eligendi enim!',
-        //     'category_id' => 2,
-        //     'user_id' => 2
-
-        // ]);
+        Experience::factory(5)->create();
         
     }
 }
