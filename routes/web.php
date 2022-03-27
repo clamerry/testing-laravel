@@ -1,12 +1,18 @@
 <?php
 
-
+use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\AddExperiencesController;
 use App\Models\Category;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardPortofolioController;
-use App\Http\Controllers\PortofolioController; 
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\MhsController;
+use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TestController;
+use App\Models\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,93 +25,67 @@ use App\Http\Controllers\PortofolioController;
 |
 */
 
+Route::get('/test', [TestController::class, 'index']);
+
 //Tampilan awal website: Halaman Login
-Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/', [LoginController::class, 'authenticate']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
 
-//routing ke halaman home
-Route::get('/home', function () {
-    return view('home', [
-        "title" => "Home",
-        'active' => 'home'
-    ]);
+
+Route::group([
+    // 'prefix'=> 'mahasiswa',
+    // 'as'=>'mahasiswa',
+    // 'namespace'=>'Mahasiswa',
+    'middleware' => 'auth', 'checkRole:mahasiswa'
+], function() {
+    //resource untuk handle method post+action = method store [form create]
+    route::resource('/mahasiswa/experiences', ExperienceController::class);
+    route::resource('/mahasiswa/projects', ProjectController::class);
+    route::resource('/mahasiswa/achievements', AchievementController::class);
+    route::resource('/dashboard/portofolios', DashboardPortofolioController::class);
+    //get(index), get(create), post(store), get(edit ($id)), put(update ($id)), get(show($id)), delete(destroy ($id))
+
 });
 
-// routing ke halaman about
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About",
-        'active' => 'about',
-        "name" => "Clamerry",
-        "email" => "isengaja114@gmail.com",
-        "image" => "ren.jpg"
-    ]);
+Route::group([
+    // 'prefix'=> 'admin',
+    // 'as'=>'admin',
+    // 'namespace'=>'Admin',
+    'middleware' => 'auth', 'checkRole:admin'
+], function() {
+    //resource untuk handle method post+action = method store [form create]
+    route::resource('/admin/mhs', MhsController::class);
+    //get(index), get(create), post(store), get(edit ($id)), put(update ($id)), get(show($id)), delete(destroy ($id))
+
 });
 
-//routing ke halaman portofolio
-Route::get('/portofolio', [PortofolioController::class, 'index']);
-
-//routing ke halaman portofolio spesifik
-Route::get('portofolio/{porto:slug}', [PortofolioController::class, 'show']);
-
-//routing ke halaman kategori
-Route::get('/categories', function() {
-    return view('categories', [
-        'title' => 'Portofolio Categories',
-        'active' => 'categories',
-        'categories' => Category::all()
-    ]);
-});
-
-//sidebar routing
-//routing ke halaman experiences
-Route::get('/dashboard/experiences', function() {
-    return view('dashboard/experiences.index');
-})->middleware('auth');
-
-//routing ke halaman projects
-Route::get('/dashboard/projects', function() {
-    return view('dashboard/projects.index');
-})->middleware('auth');
-
-//routing ke halaman achievements
-Route::get('/dashboard/achievements', function() {
-    return view('dashboard/achievements.index');
-})->middleware('auth');
-
-//routing ke halaman kelola mahasiswa
-Route::get('/dashboard/mahasiswa', function() {
-    return view('dashboard/mahasiswa.index');
-})->middleware('auth');
-
-//routing ke halaman tampilkan portofolio
-Route::get('/dashboard/generate', function() {
-    return view('dashboard/generate.index');
-})->middleware('auth');
-
-//routing ke halaman logout
+//routing halaman logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
 //routing ke halaman dashboard
 Route::get('/dashboard', function() {
-    return view('dashboard.index');
+    return view('lte.dashboard');
 })->middleware('auth');
 
-//routing ke halaman Profile
-Route::get('/dashboard/profiles', function() {
-    return view('dashboard.profiles.about');
+//routing ke halaman dashboard
+Route::get('/dashboard_admin', function() {
+    return view('admin.dashboard');
 })->middleware('auth');
 
-//routing untuk slug di add portofolio
-Route::get('/dashboard/portofolios/checkSlug', [DashboardPortofolioController::class, 'checkSlug'])->middleware('auth');
-
-//routing sidebar dashboard
-Route::resource('/dashboard/portofolios', DashboardPortofolioController::class)->middleware('auth');
-
-// Route::get('/dashboard/mahasiswa', function() {
-//     return view('dashboard.mahasiswa.index');
+//routing ke halaman daftar mahasiswa
+// Route::get('/admin/daftar_mhs', function() {
+//     return view('admin.mhs.index');
 // })->middleware('auth');
 
-//routing ke halaman sesuai role
-Route::get('/dashboard_admin', function () { return view('dashboard_admin.index'); })->middleware('checkRole:admin');
-// Route::get('/dashboard_mhs', function () { return view('dashboard_mhs.index'); })->middleware(['checkRole:mahasiswa,admin']);
+
+Route::get('/mahasiswa', function() {
+    return view('mahasiswa.dashboard');
+})->middleware('auth');
+
+Route::get('/admin/daftar_mhs', function() {
+    return view('admin.mhs.index');
+})->middleware('auth');
+
+Route::get('/testing', function() {
+    return view('lte.test');
+})->middleware('auth');

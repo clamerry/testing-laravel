@@ -19,9 +19,17 @@ class DatabaseSeeder extends Seeder
     {
         
         User::create([
+            'name' => 'Admin',
+            'username' => 'admin',
+            'role' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('asdfg'),
+        ]);
+
+        User::create([
             'name' => 'Clamerry',
             'username' => 'clamerry',
-            'role' => 'admin',
+            'role' => 'mahasiswa',
             'email' => 'isengaja114@gmail.com',
             'password' => bcrypt('12345'),
         ]);
@@ -35,23 +43,6 @@ class DatabaseSeeder extends Seeder
         ]);
         
         User::factory(3)->create();
-        
-        Category::create([
-            'name' => 'Mobile',
-            'slug' => 'mobile'
-        ]);
-
-        Category::create([
-            'name' => 'Web',
-            'slug' => 'web'
-        ]);
-
-        Category::create([
-            'name' => 'UI/UX',
-            'slug' => 'ui-ux'
-        ]);
-
-        Portofolio::factory(20)->create();
 
         Experience::factory(5)->create();
         

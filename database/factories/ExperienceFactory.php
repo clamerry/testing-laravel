@@ -26,7 +26,7 @@ class ExperienceFactory extends Factory
             'description' => $this->faker->paragraph(),
             'start_date' => $this->faker->date(),
             'end_date' => $this->faker->date(),
-            'user_id' => mt_rand(1,5)
+            'user_id' => mt_rand(2,5)
         ];
     }
 }

@@ -14,6 +14,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
+     * For login page
      *
      * @var string[]
      */
@@ -22,7 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-    
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,7 +43,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    
+    //Table Relation 
     public function portofolio()
     {
         return $this->hasMany(Portofolio::class);

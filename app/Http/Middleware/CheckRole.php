@@ -15,20 +15,14 @@ class CheckRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
         //jika akun yang login sesuai dengan role 
         //maka silahkan akses
-        //jika tidak sesuai akan diarahkan ke home
-
-        $roles = array_slice(func_get_args(), 2);
-        foreach ($roles as $role) { 
-            $user = Auth::user()->role;
-            if( $user == $role){
-                return $next($request);
-            }
+        //jika tidak sesuai akan diarahkan ke login page
+        if(in_array($request->user()->role,$roles)){
+            return $next($request);
         }
-
-        return redirect('/');
+        return redirect('/login');
     }
 }
