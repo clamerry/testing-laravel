@@ -1,0 +1,64 @@
+<?php
+
+namespace Prodi\Seeders;
+
+use App\Models\Prodi;
+use Illuminate\Database\Seeder;
+
+class ProdiSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
+    public function run()
+    {
+
+        Prodi::create([
+            'fakultas_id' => 1,
+            'nama' => ['Hukum']
+        ]);
+        Prodi::create([
+            'fakultas_id' => 2,
+            'nama' => ['Manajemen', 'Ekonomi', 'Akuntansi', 'Ekonomi Islam']
+        ]);
+        Prodi::create([
+            'fakultas_id' => 3,
+            'nama' => ['Administrasi Publik', 'Administrasi Bisnis', 'Ilmu Pemerintahan', 'Ilmu Komunikasi', 'Hubungan Internasional']
+        ]);
+        Prodi::create([
+            'fakultas_id' => 4,
+            'nama' => ['Sastra Indonesia', 'Sastra Inggris', 'Sejarah', 'Ilmu Perpustakaan', 'Bahasa dan Kebudayaan Jepang', 'Antropologi Sosial']
+        ]);
+        Prodi::create([
+            'fakultas_id' => 5,
+            'nama' => ['Psikologi']
+        ]);
+        Prodi::create([
+            'fakultas_id' => 6,
+            'nama' => ['Kesehatan Masyarakat']
+        ]);
+        Prodi::create([
+            'fakultas_id' => 7,
+            'nama' => ['Kedokteran', 'Keperawatan', 'Gizi', 'Farmasi', 'Kedokteran Gigi '] 
+        ]);
+        Prodi::create([
+            'fakultas_id' => 8,
+            'nama' => ['Peternakan', 'Teknologi Pangan', 'Agroekoteknologi', 'Agribisnis']
+        ]);
+        Prodi::create([
+            'fakultas_id' => 9,
+            'nama' => ['Matematika', 'Biologi', 'Kimia', 'Fisika', 'Statistika', 'Informatika', 'Bioteknologi']
+        ]);
+        Prodi::create([
+            'fakultas_id' => 10,
+            'nama' => ['Manajemen Sumberdaya Perairan', 'Akuakultur', 'Perikanan Tangkap', 'Ilmu Kelautan', 'Oseanografi', 'Teknologi Hasil Perikanan']
+        ]);
+        Prodi::create([
+            'fakultas_id' => 11,
+            'nama' => ['Teknik Sipil', 'Arsitektur', 'Teknik Mesin', 'Teknik Kimia', 'Teknik Elektro', 'Perencanaan Wilayah dan Kota', 'Teknik Industri', 'Teknik Lingkungan', 'Teknik Perkapalan', 'Teknik Geologi', 'Teknik Geodesi', 'Teknik Komputer']
+        ]);
+        
+    }
+}

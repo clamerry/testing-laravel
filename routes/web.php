@@ -1,18 +1,20 @@
 <?php
 
-use App\Http\Controllers\AchievementController;
-use App\Http\Controllers\AddExperiencesController;
+use App\Models\Prodi;
+use App\Models\Project;
 use App\Models\Category;
 
+use App\Models\Fakultas;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\DashboardPortofolioController;
-use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\MhsController;
-use App\Http\Controllers\PortofolioController;
-use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TestController;
-use App\Models\Project;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\AddExperiencesController;
+use App\Http\Controllers\DashboardPortofolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,10 +84,22 @@ Route::get('/mahasiswa', function() {
     return view('mahasiswa.dashboard');
 })->middleware('auth');
 
-Route::get('/admin/daftar_mhs', function() {
+Route::get('/admin/mhs', function() {
     return view('admin.mhs.index');
 })->middleware('auth');
 
 Route::get('/testing', function() {
     return view('lte.test');
 })->middleware('auth');
+
+Route::get('/fakultas', function () {
+    // dd(Fakultas::all());
+    $fakultas = Fakultas::all();
+    return view('fakultas',['fakultas' => $fakultas]);
+});
+
+Route::get('prodi', function ($id) {
+    // var_dump(Prodi::all());
+    $prodi = Prodi::where('fakultas_id', $id)->get();
+    return response()->json($prodi);
+});

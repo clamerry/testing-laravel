@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Experience extends Model
+class Prodi extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $with = ['user'];
+    protected $with = ['fakultas'];
 
-    public function User()
+    public function fakultas()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Fakultas::class, 'fakultas_id');
     }
-
 }
-

@@ -16,7 +16,7 @@
     </div> --}}
             <div class="info ml-4">
                 {{-- <a href="#" class="d-block">Welcome, Alexander Pierce</a> --}}
-                <span class="text-white">Welcome, {{ auth()->user()->name }}</span>
+                <span class="text-white">Welcome, </span>
             </div>
         </div>
 
@@ -37,7 +37,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-                @if (auth()->user()->role == 'mahasiswa')
+                {{-- @if (auth()->user()->role == 'mahasiswa') --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book-open"></i>
@@ -76,18 +76,18 @@
                             </p>
                         </a>
                     </li>
-                @endif
+                {{-- @endif --}}
 
-                @if (auth()->user()->role == 'admin')
+                {{-- @if (auth()->user()->role == 'admin') --}}
                 <li class="nav-item">
-                    <a href="admin/daftar_mhs" class="nav-link">
+                    <a href="admin/mhs" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Daftar Mahasiswa
                         </p>
                     </a>
                 </li>
-                @endif
+                {{-- @endif --}}
             </ul>
             <form action="/logout" method="post">
                 @csrf

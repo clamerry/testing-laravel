@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMhsTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateMhsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mhs', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->enum('role', ['admin', 'mahasiswa'])->default('mahasiswa');            
+            $table->rememberToken();
             $table->timestamps();
-            $table->foreignID('user_id');
-            $table->string('nama_mhs');
-            $table->string('nim');
-            $table->string('fakultas');
-            $table->string('prodi');
-            $table->timestamps();
-            
         });
     }
 
@@ -33,6 +31,6 @@ class CreateMhsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mhs');
+        Schema::dropIfExists('admins');
     }
 }
